@@ -72,37 +72,12 @@ Complete these after reading the project description.
 
 # Finds the Pearson Correlation Similarity Measure between two users
 def pcs(x, y):
-    rx = user[x].avg_r
-    ry = user[y].avg_r
-    a = 0
-    b = 1
-    c = 1
-    for j in range(0, n_items):
-        if utility[x][j] > 0 and utility[y][j] > 0:
-            a += (utility[x][j] - rx) * (utility[y][j] - ry)
-            b += (utility[x][j] - rx) ** 2
-            c += (utility[y][j] - ry) ** 2
-    return a / sqrt(b*c)
+    return 0.0
 
 # Guesses the ratings that user with id, user_id, might give to item with id, i_id.
 # We will consider the top_n similar users to do this. Use top_n as 3 in this example.
 def guess(user_id, i_id, top_n):
-    user_id -= 1
-    i_id -= 1
-    s = []
-    for i in range(0, n_users):
-        s.append((pcs(user_id, i), i))
-
-    s = sorted(s, reverse=True)
-    r = 0
-    n = 0
-    for i in range(0, top_n):
-        if utility[s[i][1]][i_id] > 0:
-            r += (utility[s[i][1]][i_id] - user[s[i][1]].avg_r)
-            n += 1
-    if n == 0:
-        n = 1
-    return ((r / n) + user[user_id].avg_r)
+    return 0.0
 
 """
 Displays utility matrix and mean squared error.
