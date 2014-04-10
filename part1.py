@@ -114,7 +114,7 @@ guess = array([guess(1, 5, n), guess(3, 1, n), guess(3, 2, n), guess(4, 4, n), g
 
 ### Ratings from the test set
 # Ann rates SW2 with 2 stars
-#Carl rates HP1 with 2 stars
+# Carl rates HP1 with 2 stars
 # Carl rates HP2 with 2 stars
 # Doug rates SW1 with 4 stars
 # Doug rates SW 2 with 3 stars

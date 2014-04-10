@@ -1,50 +1,58 @@
+"""
+Scripts to help load the movielens dataset into Python classes
+"""
 #!/bin/python
 import re
 
+# Read data/README to get more info on these data structures
 class User:
     def __init__(self, id, age, sex, occupation, zip):
-        self.id = id
-        self.age = age
+        self.id = int(id)
+        self.age = int(age)
         self.sex = sex
         self.occupation = occupation
         self.zip = zip
+        self.avg_r = 0.0
 
+# Read data/README to get more info on these data structures
 class Item:
     def __init__(self, id, title, release_date, video_release_date, imdb_url, \
     unknown, action, adventure, animation, childrens, comedy, crime, documentary, \
     drama, fantasy, film_noir, horror, musical, mystery ,romance, sci_fi, thriller, war, western):
-        self.id = id
+        self.id = int(id)
         self.title = title
         self.release_date = release_date
         self.video_release_date = video_release_date
         self.imdb_url = imdb_url
-        self.unknown = unknown
-        self.action = action
-        self.adventure = adventure
-        self.animation = animation
-        self.childrens = childrens
-        self.comedy = comedy
-        self.crime = crime
-        self.documentary = documentary
-        self.drama = drama
-        self.fantasy = fantasy
-        self.film_noir = film_noir
-        self.horror = horror
-        self.musical = musical
-        self.mystery = mystery
-        self.romance = romance
-        self.sci_fi = sci_fi
-        self.thriller = thriller
-        self.war = war
-        self.western = western
+        self.unknown = int(unknown)
+        self.action = int(action)
+        self.adventure = int(adventure)
+        self.animation = int(animation)
+        self.childrens = int(childrens)
+        self.comedy = int(comedy)
+        self.crime = int(crime)
+        self.documentary = int(documentary)
+        self.drama = int(drama)
+        self.fantasy = int(fantasy)
+        self.film_noir = int(film_noir)
+        self.horror = int(horror)
+        self.musical = int(musical)
+        self.mystery = int(mystery)
+        self.romance = int(romance)
+        self.sci_fi = int(sci_fi)
+        self.thriller = int(thriller)
+        self.war = int(war)
+        self.western = int(western)
 
+# Read data/README to get more info on these data structures
 class Rating:
     def __init__(self, user_id, item_id, rating, time):
-        self.user_id = user_id
-        self.item_id = item_id
-        self.rating = rating
+        self.user_id = int(user_id)
+        self.item_id = int(item_id)
+        self.rating = int(rating)
         self.time = time
 
+# The dataset class helps you to load files and create User, Item and Rating objects
 class Dataset:
     def load_users(self, file, u):
         f = open(file, "r")
@@ -73,15 +81,7 @@ class Dataset:
         text = f.read()
         entries = re.split("\n+", text)
         for entry in entries:
-            e = entry.split('\t', 24)
+            e = entry.split('\t', 4)
             if len(e) == 4:
                 r.append(Rating(e[0], e[1], e[2], e[3]))
         f.close()
-
-user = []
-item = []
-rating = []
-d = Dataset()
-d.load_users("u.user", user)
-d.load_items("u.item", item)
-d.load_ratings("u.base", rating)
