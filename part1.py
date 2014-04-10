@@ -52,6 +52,7 @@ utility = zeros((n_users, n_items))
 for r in rating:
     utility[r.user_id-1][r.item_id-1] = r.rating
 
+set_printoptions(precision=3)
 print utility
 
 for i in range(0, n_users):
@@ -89,7 +90,16 @@ def guess(user_id, i_id, top_n):
     return ((r / n) + user[user_id].avg_r)
 
 
-n = 4 # Assume top_n users
+n = 3 # Assume top_n users
+
+utility_copy = copy(utility)
+for i in range(0, n_users):
+    for j in range(0, n_items):
+        if utility_copy[i][j] == 0:
+            utility_copy[i][j] = guess(i, j, n)
+
+print utility_copy
+
 print "Ann's rating for SW2 should be " + str(guess(1, 5, n))
 print "Carl's rating for HP1 should be " + str(guess(3, 1, n))
 print "Carl's rating for HP2 should be " + str(guess(3, 2, n))
