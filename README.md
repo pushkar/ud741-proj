@@ -14,7 +14,8 @@ Getting Started
 
 Files
 -----
-* part1.py - Start here. This will help you with solving the first part of your project.
+* part1.py - Start here. This is the template for the first part of your project.
+* part2.py - This is the template for the second part of your project. The movielens.py script provides helper functions to load the movielens dataset.
 
 Contributing
 ------------
